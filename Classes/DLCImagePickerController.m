@@ -43,7 +43,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.wantsFullScreenLayout = YES;
+    self.wantsFullScreenLayout = NO;
     //set background color
     self.view.backgroundColor = [UIColor colorWithPatternImage:
                                  [UIImage imageNamed:@"micro_carbon"]];
@@ -78,6 +78,10 @@
     //camera setup
     [super viewDidAppear:animated];
     
+    CGRect bounds = self.view.bounds;
+    CGRect rect = self.photoBar.frame;
+    rect.origin.y = bounds.size.height - rect.size.height;
+    self.photoBar.frame = rect;
 }
 
 -(void) loadFilters {
